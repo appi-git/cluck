@@ -130,7 +130,7 @@ updateTime();
 setInterval(updateTime,interval);
 
 hfDo.addEventListener("click", ()=>{
-    window.open("info/info.html", "_blank");
+    window.open("info/index.html", "_blank");
 });
 
 mfDo.addEventListener("click", ()=>{
