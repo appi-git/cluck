@@ -134,11 +134,30 @@ hfDo.addEventListener("click", ()=>{
 });
 
 mfDo.addEventListener("click", ()=>{
+    console.log(screen.orientation.type)
     if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen();
-    } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
+        document.querySelectorAll(".grids").forEach(grid=>{
+            grid.style.padding="35px";
+        })
+    } else if (document.fullscreenElement) {
+        document.exitFullscreen();
+        if(screen.orientation.type=="portrait-primary"||screen.orientation.type=="portrait-secondary"){
+            document.querySelectorAll(".grids").forEach(grid=>{
+                grid.style.padding="65px";
+            })
         }
     }
 });
+screen.orientation.addEventListener("change",()=>{
+    if(screen.orientation.type=="portrait-primary"||screen.orientation.type=="portrait-secondary"){
+        document.querySelectorAll(".grids").forEach(grid=>{
+            grid.style.padding="65px";
+        })
+
+    }else if(screen.orientation.type=="landscape-primary"||screen.orientation.type=="landscape-secondary"){
+        document.querySelectorAll(".grids").forEach(grid=>{
+            grid.style.padding="35px";
+        })
+    }
+})

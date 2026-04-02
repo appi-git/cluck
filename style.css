@@ -11,6 +11,7 @@ body{
   gap: 5px;
 }
 
+
 body div{
   display: flex;
 }
@@ -30,7 +31,7 @@ body div{
 }
 .grids{
   border: 2px solid black;
-  padding: 40px;
+  padding: 35px;
 }
 
 @media screen and (orientation: portrait){
@@ -46,6 +47,6 @@ body div{
      flex-direction:row;
   }
   .grids{
-    padding: 60px;
+    padding: 65px;
   }
 }
