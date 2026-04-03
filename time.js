@@ -7,7 +7,7 @@ let ones = 0;
 const clr1 = "transparent";
 const clr2 = "crimson";
 
-const interval = 10000;
+const interval = 1000;
 
 const sixteensH = hour.querySelector(".sixteens");    //sixteens hour
 const hsUn = sixteensH.querySelector(".grid-one");
