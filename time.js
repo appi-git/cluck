@@ -1,3 +1,5 @@
+//test comment
+
 const hour = document.querySelector(".hour-block");
 const minute = document.querySelector(".minute-block");
 const second = document.querySelector(".second-block");
