@@ -1,81 +1,51 @@
-body{
-    font-family: Sour Gummy, sans-serif;
-    font-weight: 500;
-    font-size: larger;
-    background-color: cornsilk;
+#butts-div{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    margin-top: 20px;
+    margin-bottom:100px;
 }
+.butt-div{
+    --min-size: 8vmin;
+    --max-size: 12vmin;
+    width: var(--min-size);
+    height: var(--min-size);
 
-p{
-    margin: -5px;
+    border: 0.8vmin solid black;
+    border-radius:100%;
 }
-
-.hour-side,
-.minute-side,
-.arrangement-direction {
+#color-selector-div{
+    position:relative;
+    top:120%;
+    width:200%;
+    min-width: max-content;
 }
-
-.active-grid{
-    color: deepskyblue
+#color-input-div{
+    width:180px;
+    display:flex;
+    flex-direction: row;
 }
-
-.inactive-grid{
-    color: crimson;
+#color-samples-div{
+    display:grid;
+    grid: repeat(3,1fr)/repeat(4,1fr);
+    user-select: none;
+    border: 2px solid black;
+    aspect-ratio: 2/1;
 }
-
-.block{
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-}
-.row{
-    background-color: deepskyblue;
-}
-.ones{
-    margin-right: 20px;
-}
-.grids{
+.color-sample{
     border: 1px solid black;
-    padding: 15px;
 }
-
-
-
-.block-1 .sixteens,.block-1 .ones,
-.block-1 .fours .grid-three,
-.block-1 .fours .grid-two {background-color: crimson;}
-
-.block-2 .sixteens,
-.block-2 .ones .grid-three,
-.block-2 .fours .grid-two ,
-.block-2 .fours .grid-three{background-color: crimson;}
-
-@media screen and (orientation: portrait){
-    p{
-        margin:2px;
-        font-size: 18px;
-    }
-    .block{
-        flex-direction: column;
-    }
-    .block-2{
-        flex-direction: column-reverse;
-        margin-bottom: 50px;
-    }
-    .row{
-        display: flex;
-        flex-direction: row-reverse;
-    }
-    .ones{
-        margin-right: 0;
-    }
-    .block-1 .ones{
-        margin-bottom: 10px;
-    }
-    .block-2 .sixteens{
-        margin-bottom: 10px;
-    }
-    .hint-text{
-        position: relative;
-        top: 130px;
-    }
+.color-input-box{
+    width:80%;
+    padding:1.25px;
+}
+.color-select-button{
+    user-select: none;
+    width:20%;
+    height:100%;
+}
+#reset{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
 }

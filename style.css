@@ -4,7 +4,6 @@ html, body{
 }
 
 body{
-  background-color: cornsilk;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,9 +17,7 @@ body div{
 
 .hour-block,
 .minute-block,
-.second-block{
-  background-color: deepskyblue;
-}
+.second-block{}
 
 .second-block{
   display:none;

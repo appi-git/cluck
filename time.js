@@ -1,13 +1,26 @@
 //test comment
 
+
 const hour = document.querySelector(".hour-block");
 const minute = document.querySelector(".minute-block");
 const second = document.querySelector(".second-block");
 let sixteens = 0;
 let fours = 0;
 let ones = 0;
-const clr1 = "transparent";
-const clr2 = "crimson";
+
+const savedColors = JSON.parse(localStorage.getItem("savedColors")) || {
+    pclr: "#00BFFF",
+    sclr: "#DC143C",
+    bgclr: "#FFF8DC",
+    bdclr: "#000000"
+}
+
+const clr1 = savedColors.pclr;
+const clr2 = savedColors.sclr
+document.querySelector("body").style.backgroundColor = savedColors.bgclr;
+document.querySelectorAll(".grids").forEach(grid=>{
+    grid.style.borderColor = savedColors.bdclr;
+})
 
 const interval = 1000;
 
@@ -132,7 +145,9 @@ updateTime();
 setInterval(updateTime,interval);
 
 hfDo.addEventListener("click", ()=>{
-    window.open("info/index.html", "_blank");
+    history.pushState({},'',"/info")
+    location.reload()
+    //window.open("info/index.html", "_blank");
 });
 
 mfDo.addEventListener("click", ()=>{
