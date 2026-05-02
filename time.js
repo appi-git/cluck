@@ -145,7 +145,7 @@ updateTime();
 setInterval(updateTime,interval);
 
 hfDo.addEventListener("click", ()=>{
-    history.pushState({},'',"/cluck/info/index.html")
+    history.pushState({},'',"./info/index.html")
     location.reload()
     //window.open("info/index.html", "_blank");
 });
