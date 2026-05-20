@@ -145,7 +145,11 @@ updateTime();
 setInterval(updateTime,interval);
 
 hfDo.addEventListener("click", ()=>{
+<<<<<<< HEAD
     history.pushState({},'',"./info")
+=======
+    history.pushState({},'',"./info/index.html")
+>>>>>>> 607e2be3a30af8f85979df64c33fe5a8bea381a0
     location.reload()
     //window.open("info/index.html", "_blank");
 });
