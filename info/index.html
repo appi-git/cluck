@@ -3,82 +3,72 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Info</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h2 style="font-weight:500;">This is the information page</h2>
-    <p>The clock is divided into two blocks, hour block on the 
-        <span class="hour-side"></span>
-        and minute block on the 
-        <span class="minute-side"></span>,
-         seperated by a small space in the middle.
-    </p>
-    <p>Each block has three <span class="arrangement-direction"></span>s. 
-        Each <span class="arrangement-direction"></span> 
-        represents a power of 4.
-    </p>
-    <p>Power represented by each <span class="arrangement-direction"></span>
-        increases to the <span class="hour-side"></span>
-        and <span class="minute-side"></span> of the gap
-    </p>
-    <p>
-        That is, the first <span class="arrangement-direction"></span> 
-        to the <span class="hour-side"></span> and <span class="minute-side"></span>
-        from the gap represents 4 raised to 0 (4^0)
-        and the second <span class="arrangement-direction"></span> 
-        represents 4 raised to the first power (4^1) finally the third 
-        <span class="arrangement-direction"></span> represents 4 raised to the second power (4^2).
-    </p>
-    <h3 style="margin-bottom:8px;">Grids</h3>
-    <p>Each grid in a <span class="arrangement-direction"></span> represents the multiple of the corresponding value. Each grid has one of two states:
-        <span class="active-grid">active</span> and <span class="inactive-grid">inactive</span>.
-        <br>
-        For each <span class="active-grid">active</span> grid in a 
-        <span class="arrangement-direction"></span>, the value represented by that 
-        <span class="arrangement-direction"></span> is added to the total value of that block.
-    </p>
-    <div class="block block-1">
-        <div class="row sixteens">
-            <div class="grids grid-one"></div>
-            <div class="grids grid-two"></div>
-            <div class="grids grid-three"></div>
-        </div>
-        <div class="row fours">
-            <div class="grids grid-one"></div>
-            <div class="grids grid-two"></div>
-            <div class="grids grid-three"></div>
-        </div>
-            <div class="row ones">
-            <div class="grids grid-one"></div>
-            <div class="grids grid-two"></div>
-            <div class="grids grid-three"></div>
-        </div>
-        <p>This block represents the number 55</p>
+    <div id="butts-div">
+        <div class="butt-div" id="bg-color"></div>
+        <div class="butt-div" id="bd-color"></div>
+        <div class="butt-div" id="p-color"></div>
+        <div class="butt-div" id="s-color"></div>
+        <div class="butt-div" id="reset">Reset</div>
     </div>
-    <div class="block block-2">
-        <div class="row sixteens">
-            <div class="grids grid-one"></div>
-            <div class="grids grid-two"></div>
-            <div class="grids grid-three"></div>
+    <div id="guide-div" style="margin-bottom: 100px;">
+        <div>
+            <h1>How to read a block</h1>
+            <p>
+                Each block is divided into 9 grids. 
+                Each column (set of vertical grids) from left to right corresponds to a power of four.
+            </p>
+            <div>
+                <table>
+                    <tr>
+                        <td>First Column</td>
+                        <td>4^0 (=1)</td>
+                    </tr>
+                    <tr>
+                        <td>Second Column</td>
+                        <td>4^1 (=4)</td>
+                    </tr>
+                    <tr>
+                        <td>Third Column</td>
+                        <td>4^2 (=16)</td>
+                    </tr>
+                </table>
+            </div>
+            <p>
+                Each of the three grids in a column can either be 
+                <span class="colored-text active-color">active</span> 
+                or 
+                <span class="colored-text inactive-color">inactive</span>. 
+                For each 
+                <span class="colored-text active-color">active</span>
+                grid in a column, 
+                you add up the corresponding power of four (1, 4 or 16) represented by that column. 
+                The total sum is the number represented by the block.
+            </p>
         </div>
-        <div class="row fours">
-            <div class="grids grid-one"></div>
-            <div class="grids grid-two"></div>
-            <div class="grids grid-three"></div>
+        <div>
+            <h1>How to read a clock</h1>
+            <p>The clock has two modes, landscape and portrait. 
+                The current format is 
+                Hours:Minutes (from left to right) in landscape 
+                and 
+                Hours:Minutes (top to bottom) in portrait.
+            </p>
+            <div style="display:flex;gap:50px;align-items:center;">
+                <div id="sample-block">
+                    <div class="column"></div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                    <input type="range" value="0"min="0" max="63" id="numSlider">
+                    <input type="number" value="0" id="numInput">
+                </div>
+            </div>
         </div>
-            <div class="row ones">
-            <div class="grids grid-one"></div>
-            <div class="grids grid-two"></div>
-            <div class="grids grid-three"></div>
-        </div>
-        <p class="hint-text">This minute block represents the number 27</p>
     </div>
-    <p style="font-size:16px;margin-top:5px;">*note that hour blocks are read from right to left or bottom to top starting from the gap 
-        and minute block is read from left to right or top to bottom starting from the gap</p>
-    
     <script src="script.js"></script>
 </body>
 </html>
