@@ -246,8 +246,6 @@ numInput.addEventListener("input",()=>{
         numInput.value = 63;
     } else if(numInput.value<0){
         numInput.value = 0;
-    } else if(numInput.value==""){
-        numInput.value = 0;
     }
     numSlider.value = numInput.value;
     setBlock(numInput.value);
