@@ -31,18 +31,16 @@ body div{
   padding: 35px;
 }
 
+.fours .grid-two:hover{
+  filter:brightness(0.6)
+}
+
 @media screen and (orientation: portrait){
+  
   body{
     flex-direction: column;
   }
-  .hour-block,
-.minute-block,
-.second-block{
-  flex-direction: column;
-  }
-  .row{
-     flex-direction:row;
-  }
+     
   .grids{
     padding: 65px;
   }

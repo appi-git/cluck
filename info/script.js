@@ -1,4 +1,6 @@
-const colorSamples = ["#fff8dc","#000000","#00BFFF","#DC143C","#FF69B4","#8A2BE2","#7FFF00","#FF4500","#2E8B57","#FFD700","#00CED1","#FF1493"];
+const colorSamples = ["#fff8dc","#000000","#00BFFF","#DC143C",
+    "#FF69B4","#8A2BE2","#7FFF00","#FF4500",
+    "#2E8B57","#FFD700","#00CED1","#FFFFFF"];
 const colorSampleTemplate = function(){
     let template = "";
     colorSamples.forEach(clr => {
@@ -30,32 +32,68 @@ const buttIdToColor = {
 };
 const buttsDiv = document.getElementById("butts-div");
 const buttDivs = document.querySelectorAll(".butt-div");
-
+function tooDark(color) {
+    let strike=0;
+    const rgb = (
+            (color.slice(4,-1))
+            .split(","))
+            .map(n=>parseInt(n)
+        );
+    rgb.forEach(value=>{
+        if(value<=40){
+            strike++;
+        }
+    })
+    return (strike==3) ? true : false;
+}
 function applySavedColors(){
+    document.body.style.backgroundColor = savedColors.bgclr;
     buttDivs.forEach(buttDiv => {
         buttDiv.style.backgroundColor = savedColors[buttIdToColor[buttDiv.id]];
-        if(savedColors.bgclr=="#000000"||savedColors.bgclr=="#000"){
+        if(tooDark(document.body.style.backgroundColor)){
             buttDiv.style.borderColor = "#FFFFFF";
             if(buttDiv.id=="reset"){
                 buttDiv.style.color = "#FFFFFF";
             }
+            document.body.style.color = "#FFFFFF";
         }else{
             buttDiv.style.borderColor = "#000000";
             if(buttDiv.id=="reset"){
                 buttDiv.style.color = "#000000";
             }
+            document.body.style.color = "#000000";
         }
     })
-    document.body.style.backgroundColor = savedColors.bgclr;
-    document.body.style.color = savedColors.bdclr;
-    document.querySelectorAll(".active-grid").forEach(elem => {
+    document.querySelectorAll(".active-color").forEach(elem => {
         elem.style.color = savedColors.sclr;
     });
-    document.querySelectorAll(".inactive-grid").forEach(elem => {
+    document.querySelectorAll(".inactive-color").forEach(elem => {
         elem.style.color = savedColors.pclr;
+    });
+    document.querySelectorAll(".colored-text").forEach(elem => {
+        if(tooDark(document.body.style.backgroundColor)){
+            elem.style.webkitTextStrokeColor = "#FFFFFF";
+        }else{
+            elem.style.webkitTextStrokeColor = "#000000";
+        }
+    })
+    document.querySelectorAll(".grid").forEach(elem => {
+        if(elem.classList.contains("active-color")){
+            elem.style.backgroundColor = savedColors.sclr;
+        } else if(elem.classList.contains("inactive-color")){
+            elem.style.backgroundColor = savedColors.pclr;
+        }
+        elem.style.borderColor = savedColors.bdclr;
     });
 }
 applySavedColors();
+
+function sendRequest(){
+    fetch('http://localhost:3000/')
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+}
 
 const mutationOptions= {
     childList: true
@@ -109,9 +147,10 @@ const observer = new MutationObserver(()=>{
 
 let selectedButt = null;
 buttsDiv.addEventListener("click",()=>{
+    //sendRequest();
     if(!event.target.classList.contains("butt-div")){
         for (buttDiv of buttDivs){
-            buttDiv.innerHTML = '';
+            buttDiv.innerHTML = buttDiv.id=="reset" ? 'Reset' : '';
         }
     }else if(event.target.id=="reset"){
         if(event.target.innerText == 'Reset?'){
@@ -120,7 +159,7 @@ buttsDiv.addEventListener("click",()=>{
             savedColors.sclr = "#DC143C";
             savedColors.bgclr = "#FFF8DC";
             savedColors.bdclr = "#000000";
-            event.target.innerText = '';
+            event.target.innerText = 'Reset';
         } else{
             event.target.innerText = 'Reset?';
         }
@@ -136,6 +175,8 @@ buttsDiv.addEventListener("click",()=>{
                     selectedButt = null;
                     childElement.innerHTML = '';
                 }
+            }else if(childElement.id=="reset"){
+                childElement.innerHTML = 'Reset';
             } else{
                 childElement.innerHTML = '';
             }
@@ -143,3 +184,72 @@ buttsDiv.addEventListener("click",()=>{
     }
     applySavedColors();
 })
+
+function quatern(n) {
+    sixteens = 0;
+    fours = 0;
+    ones = 0;
+    
+    for (; n>=16; n-=16){
+        sixteens++;
+    }
+    for (fours; n>=4 && n<16; n-=4){
+        fours++;
+    }
+    for (ones; n>=1 && n<4; n-=1){
+        ones++;
+    }
+    return {0:ones, 1:fours, 2:sixteens};
+}
+
+const columns = document.querySelectorAll(".column");
+function setColumn(column, nummer){
+    for(let i=0; i<3; i++){
+        const grid = document.createElement("div");
+        grid.classList.add("grid");
+        grid.style.border = "2px solid black";
+        grid.classList.add("inactive-color");
+        if(nummer==0){
+            
+        } else if(nummer==1 && i==2){
+            grid.classList.remove("inactive-color");
+            grid.classList.add("active-color");
+        } else if(nummer==2 && i>=1){
+            grid.classList.remove("inactive-color");
+            grid.classList.add("active-color");
+        } else if(nummer==3 && i>=0){
+            grid.classList.remove("inactive-color");
+            grid.classList.add("active-color");
+        }
+        column.appendChild(grid);
+    }
+}
+function setBlock(n){
+    columns.forEach(column => {
+        column.replaceChildren();
+    })
+    columns.forEach((column, index)=>{
+        quaternResult = quatern(n);
+        setColumn(column, quaternResult[index]);
+    })
+    applySavedColors();
+}
+const numSlider = document.getElementById("numSlider");
+const numInput = document.getElementById("numInput");
+
+numSlider.addEventListener("input",()=>{
+    setBlock(numSlider.value);
+    numInput.value = numSlider.value;
+})
+numInput.addEventListener("input",()=>{
+    if(numInput.value>63){
+        numInput.value = 63;
+    } else if(numInput.value<0){
+        numInput.value = 0;
+    } else if(numInput.value==""){
+        numInput.value = 0;
+    }
+    numSlider.value = numInput.value;
+    setBlock(numInput.value);
+})
+numSlider.dispatchEvent(new Event("input"));

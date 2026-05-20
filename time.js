@@ -145,7 +145,7 @@ updateTime();
 setInterval(updateTime,interval);
 
 hfDo.addEventListener("click", ()=>{
-    history.pushState({},'',"/info")
+    history.pushState({},'',"./info")
     location.reload()
     //window.open("info/index.html", "_blank");
 });
