@@ -58,8 +58,4 @@ body{
   body{
     flex-direction: column;
   }
-     
-  .grids{
-    padding: 65px;
-  }
 }

@@ -7,6 +7,7 @@ body{
   grid-template-columns: repeat(3,1fr) 5fr 1fr;
   font-family: Arial, Helvetica, sans-serif;
   height: 50px;
+  margin:-8px;
 
   margin-bottom: 10px;
 }
@@ -15,7 +16,7 @@ body{
   display:flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5em;
+  font-size: clamp(1rem,4vw,1.5rem);
   background-color: tan;
   filter:brightness(1.05);
 
@@ -52,8 +53,9 @@ body{
 }
 
 #butts-div{
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
+    display:flex;
+    flex-flow: row wrap;
+    gap: 30px 50px;
 }
 
 .butt-container{
@@ -137,7 +139,7 @@ td{
 #block-test-div{
   display:flex;
   padding:5%;
-  gap: clamp(10vh,20px,20vh);
+  gap:20px;
   flex-direction: column;
   justify-content: center;
   margin-right:50px;
@@ -152,6 +154,14 @@ td{
     display: grid;
     grid: 60px 60px 60px/ 60px;
 }
+
+#test-input-div{
+  display:flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
 #numInput{
     height: 30px;
     width: 60px;
@@ -163,13 +173,29 @@ td{
 
   width:90vw;
   min-width: 26vw;
-  height:90vh;
+  height:max-content;
   margin-left:3vw;
   margin-right:1vw;
-
-  background-color: grey;
   border: 1px solid black;
+  padding:40px;
 
   display:none;
   flex-direction:column-reverse;
+}
+
+
+@media screen and (orientation: portrait){
+  
+  body{
+    flex-direction: column;
+  }
+  #navbar{
+    grid-template-columns: repeat(3,1fr) 2fr 1fr;
+  }
+  #guide-div{
+    flex-direction: column;
+  }
+  #block-test-div{
+    flex-direction:row;
+  }
 }
