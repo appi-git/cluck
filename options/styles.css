@@ -21,10 +21,13 @@ body{
   filter:brightness(1.05);
 
   user-select: none;
+  transition: 
+    background-color .25s ease-in,
+    filter 0.2s ease-in-out;
 }
 
 .nav:hover{
-  filter: brightness(1.1);
+  filter: brightness(1.125);
 }
 .nav:active{
   filter:brightness(0.9);
