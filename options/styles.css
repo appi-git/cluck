@@ -1,3 +1,7 @@
+body{
+  font-family:Arial, Helvetica, sans-serif;
+}
+
 #navbar{
   display:grid;
   grid-template-columns: repeat(3,1fr) 5fr 1fr;
@@ -44,12 +48,20 @@
 
 #edit-div{
   display: none;
+  width:100%;
 }
 
 #butts-div{
     display: grid;
-    grid: 1fr 1fr 1fr / 1fr 1fr;
+    grid-template-columns: repeat(5,1fr);
 }
+
+.butt-container{
+  display:flex;
+  flex-direction: column;
+  gap:15px;
+}
+
 .butt-div{
     --size: clamp(8vmin, 50px, 12vmin);
     width: var(--size);
