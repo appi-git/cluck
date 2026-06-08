@@ -1,0 +1,163 @@
+#navbar{
+  display:grid;
+  grid-template-columns: repeat(3,1fr) 5fr 1fr;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 50px;
+
+  margin-bottom: 10px;
+}
+
+.nav{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  background-color: tan;
+  filter:brightness(1.05);
+
+  user-select: none;
+}
+
+.nav:hover{
+  filter: brightness(1.1);
+}
+.nav:active{
+  filter:brightness(0.9);
+}
+#filler:hover{
+  filter:brightness(1.05);
+}
+#filler:active{
+  filter:brightness(1.05);
+}
+
+
+
+
+/* CONTENTS STYLING */
+
+#contents-div{
+  display:flex;
+  flex-direction: row;
+}
+
+
+#edit-div{
+  display: none;
+}
+
+#butts-div{
+    display: grid;
+    grid: 1fr 1fr 1fr / 1fr 1fr;
+}
+.butt-div{
+    --size: clamp(8vmin, 50px, 12vmin);
+    width: var(--size);
+    height: var(--size);
+
+    border: 0.8vmin solid black;
+    border-radius:100%;
+}
+
+#color-selector-div{
+    position:relative;
+    top:120%;
+    width:200%;
+    min-width: max-content;
+}
+#color-input-div{
+    width:180px;
+    display:flex;
+    flex-direction: row;
+}
+#color-samples-div{
+    display:grid;
+    grid: repeat(3,1fr)/repeat(4,1fr);
+    user-select: none;
+    border: 2px solid black;
+    aspect-ratio: 2/1;
+}
+.color-sample{
+    border: 1px solid black;
+}
+.color-input-box{
+    width:80%;
+    padding:1.25px;
+}
+.color-select-button{
+    user-select: none;
+    width:20%;
+    height:100%;
+}
+#reset{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+
+/* GUIDE DIV STYLES */
+#guide-div{
+  display:flex;
+  flex-direction: row;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:1.2rem
+}
+
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+tr{
+    border-spacing: 0px;
+}
+
+td{
+    border: 1px solid black;
+    padding: 5px;
+    margin:0px;
+}
+.colored-text{
+    -webkit-text-stroke: 0.2px black;
+}
+
+#block-test-div{
+  display:flex;
+  padding:5%;
+  gap: clamp(10vh,20px,20vh);
+  flex-direction: column;
+  justify-content: center;
+  margin-right:50px;
+}
+
+#sample-block{
+    display:flex;
+    width:max-content;
+}
+.column{
+    width:max-content;
+    display: grid;
+    grid: 60px 60px 60px/ 60px;
+}
+#numInput{
+    height: 30px;
+    width: 60px;
+     text-align: center;
+}
+
+
+#chat-div{
+
+  width:90vw;
+  min-width: 26vw;
+  height:90vh;
+  margin-left:3vw;
+  margin-right:1vw;
+
+  background-color: grey;
+  border: 1px solid black;
+
+  display:none;
+  flex-direction:column-reverse;
+}

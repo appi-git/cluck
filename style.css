@@ -1,3 +1,11 @@
+:root{
+  --pclr: #00BFFF;
+  --sclr: #DC143C;
+  --bgclr: #FFF8DC;
+  --bdclr: #000000;
+  --grid-size: 74px;
+}
+
 html, body{
   height:100%;
   margin: 0px;
@@ -8,32 +16,42 @@ body{
   justify-content: center;
   align-items: center;
   gap: 5px;
+  background-color: var(--bgclr,#FFF8DC);
 }
 
-
-body div{
-  display: flex;
+.block{
+  display:flex;
+  width:max-content;
 }
 
-.hour-block,
-.minute-block,
-.second-block{}
-
-.second-block{
+#second{
   display:none;
 }
 
-.row{
-  flex-direction: column-reverse;
-}
-.grids{
-  border: 2px solid black;
-  padding: 35px;
+.column{
+  width:max-content;
+  display: grid;
+  grid: repeat(3, var(--grid-size)) / var(--grid-size);
 }
 
-.fours .grid-two:hover{
-  filter:brightness(0.6)
+.active-color{
+  background-color: var(--sclr,#DC143C);
 }
+.inactive-color{
+  background-color: var(--pclr,#00BFFF);
+}
+.grid{
+  border: 2px solid var(--bdclr,#000000);
+}
+
+.special:hover{
+  filter: brightness(0.8);
+}
+
+.special:active{
+  filter: brightness(0.6);
+}
+
 
 @media screen and (orientation: portrait){
   
