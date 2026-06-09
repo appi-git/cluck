@@ -56,9 +56,9 @@ body{
 }
 
 #butts-div{
-    display:flex;
-    flex-flow: row wrap;
-    gap: 30px 50px;
+  display:flex;
+  flex-flow: row wrap;
+  gap: 30px 50px;
 }
 
 .butt-container{
@@ -68,50 +68,71 @@ body{
 }
 
 .butt-div{
-    --size: clamp(8vmin, 50px, 12vmin);
-    width: var(--size);
-    height: var(--size);
+  --size: clamp(8vmin, 50px, 12vmin);
+  width: var(--size);
+  height: var(--size);
 
-    border: 0.8vmin solid black;
-    border-radius:100%;
+  border: 0.8vmin solid black;
+  border-radius:100%;
 }
 
 #color-selector-div{
-    position:relative;
-    top:120%;
-    width:200%;
-    min-width: max-content;
+  position:relative;
+  top:120%;
+  width:200%;
+  min-width: max-content;
 }
 #color-input-div{
-    width:180px;
-    display:flex;
-    flex-direction: row;
+  width:180px;
+  display:flex;
+  flex-direction: row;
 }
 #color-samples-div{
-    display:grid;
-    grid: repeat(3,1fr)/repeat(4,1fr);
-    user-select: none;
-    border: 2px solid black;
-    aspect-ratio: 2/1;
+  display:grid;
+  grid: repeat(3,1fr)/repeat(4,1fr);
+  user-select: none;
+  border: 2px solid black;
+  aspect-ratio: 2/1;
 }
 .color-sample{
-    border: 1px solid black;
+  border: 1px solid black;
 }
 .color-input-box{
-    width:80%;
-    padding:1.25px;
+  width:80%;
+  padding:1.25px;
 }
 .color-select-button{
-    user-select: none;
-    width:20%;
-    height:100%;
+  user-select: none;
+  width:20%;
+  height:100%;
 }
 #reset{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
 }
+
+#seconds-toggle-container{
+  margin-top:50px;
+  margin-left:15px;
+  display:flex;
+  flex-direction: column;
+  gap:5px;
+}
+#seconds-toggle-div{
+  width:30px;
+  border: 2px solid black;
+  padding:15px;
+  border-radius:100px;
+
+  transition: background-color 0.1s linear;
+}
+
+#seconds-toggle-div:hover{
+  filter:brightness(0.8)
+}
+
 
 
 /* GUIDE DIV STYLES */
@@ -123,20 +144,20 @@ body{
 }
 
 table{
-    border: 1px solid black;
-    border-collapse: collapse;
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 tr{
-    border-spacing: 0px;
+  border-spacing: 0px;
 }
 
 td{
-    border: 1px solid black;
-    padding: 5px;
-    margin:0px;
+  border: 1px solid black;
+  padding: 5px;
+  margin:0px;
 }
 .colored-text{
-    -webkit-text-stroke: 0.2px black;
+  -webkit-text-stroke: 0.2px black;
 }
 
 #block-test-div{
@@ -149,13 +170,13 @@ td{
 }
 
 #sample-block{
-    display:flex;
-    width:max-content;
+  display:flex;
+  width:max-content;
 }
 .column{
-    width:max-content;
-    display: grid;
-    grid: 60px 60px 60px/ 60px;
+  width:max-content;
+  display: grid;
+  grid: 60px 60px 60px/ 60px;
 }
 
 #test-input-div{
@@ -166,9 +187,9 @@ td{
   align-items: center;
 }
 #numInput{
-    height: 30px;
-    width: 60px;
-     text-align: center;
+  height: 30px;
+  width: 60px;
+  text-align: center;
 }
 
 

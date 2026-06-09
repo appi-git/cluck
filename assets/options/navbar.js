@@ -33,19 +33,16 @@ navbar.addEventListener('click',()=>{
       window.location.href='../'
       break
     case 'guide':
-      console.log('guide page')
       chatDiv.style.display = 'none';
       editDiv.style.display = 'none';
       guideDiv.style.display = 'flex';
       break
     case 'edit':
-      console.log('edits page')
       chatDiv.style.display = 'none';
       editDiv.style.display = 'block';
       guideDiv.style.display = 'none';
       break
     case 'chat':
-      console.log('chat page')
       chatDiv.style.display = 'flex';
       editDiv.style.display = 'none';
       guideDiv.style.display = 'none';
@@ -58,3 +55,5 @@ navbar.addEventListener('click',()=>{
   }
   event.target.style.backgroundColor = 'rgb(170, 150, 110)'
 })
+
+navbarDivs.guide.click()

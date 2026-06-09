@@ -72,4 +72,5 @@ document.addEventListener("click", (e)=>{
 });
 
 updateTime();
+document.getElementById('second').style.display = localStorage.getItem('seconds-div-display') ?? 'none'
 setInterval(updateTime,interval);

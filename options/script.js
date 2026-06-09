@@ -8,44 +8,46 @@ const buttDivs = document.querySelectorAll(".butt-div");
 const contentsDiv = document.getElementById('contents-div')
 
 function applySavedColors(){
-    document.body.style.backgroundColor = savedColors.bgclr;
-    buttDivs.forEach(buttDiv => {
-        buttDiv.style.backgroundColor = savedColors[buttIdToColor[buttDiv.id]];
-        if(tooDark(document.body.style.backgroundColor)){
-            buttDiv.style.borderColor = "#FFFFFF";
-            if(buttDiv.id=="reset"){
-                buttDiv.style.color = "#FFFFFF";
-            }
-            contentsDiv.style.color = "#FFFFFF";
-        }else{
-            buttDiv.style.borderColor = "#000000";
-            if(buttDiv.id=="reset"){
-                buttDiv.style.color = "#000000";
-            }
-            contentsDiv.style.color = "#000000";
-        }
-    })
-    document.querySelectorAll(".active-color").forEach(elem => {
-        elem.style.color = savedColors.sclr;
-    });
-    document.querySelectorAll(".inactive-color").forEach(elem => {
-        elem.style.color = savedColors.pclr;
-    });
-    document.querySelectorAll(".colored-text").forEach(elem => {
-        if(tooDark(document.body.style.backgroundColor)){
-            elem.style.webkitTextStrokeColor = "#FFFFFF";
-        }else{
-            elem.style.webkitTextStrokeColor = "#000000";
-        }
-    })
-    document.querySelectorAll(".grid").forEach(elem => {
-        if(elem.classList.contains("active-color")){
-            elem.style.backgroundColor = savedColors.sclr;
-        } else if(elem.classList.contains("inactive-color")){
-            elem.style.backgroundColor = savedColors.pclr;
-        }
-        elem.style.borderColor = savedColors.bdclr;
-    });
+  document.body.style.backgroundColor = savedColors.bgclr;
+  buttDivs.forEach(buttDiv => {
+    buttDiv.style.backgroundColor = savedColors[buttIdToColor[buttDiv.id]];
+    if(tooDark(document.body.style.backgroundColor)){
+      buttDiv.style.borderColor = "#FFFFFF";
+      if(buttDiv.id=="reset"){
+        buttDiv.style.color = "#FFFFFF";
+      }
+      contentsDiv.style.color = "#FFFFFF";
+    }else{
+      buttDiv.style.borderColor = "#000000";
+      if(buttDiv.id=="reset"){
+          buttDiv.style.color = "#000000";
+      }
+      contentsDiv.style.color = "#000000";
+    }
+  })
+  document.querySelectorAll(".active-color").forEach(elem => {
+    elem.style.color = savedColors.sclr;
+  });
+  document.querySelectorAll(".inactive-color").forEach(elem => {
+    elem.style.color = savedColors.pclr;
+  });
+  document.querySelectorAll(".colored-text").forEach(elem => {
+    if(tooDark(document.body.style.backgroundColor)){
+      elem.style.webkitTextStrokeColor = "#FFFFFF";
+    }else{
+      elem.style.webkitTextStrokeColor = "#000000";
+    }
+  })
+  document.querySelectorAll(".grid").forEach(elem => {
+    if(elem.classList.contains("active-color")){
+      elem.style.backgroundColor = savedColors.sclr;
+    } else if(elem.classList.contains("inactive-color")){
+      elem.style.backgroundColor = savedColors.pclr;
+    }
+    elem.style.borderColor = savedColors.bdclr;
+  });
+  document.getElementById('seconds-toggle-div').style.backgroundColor = (localStorage.getItem('seconds-div-display')=='flex') ? 'rgb(0,255,0)' : 'rgb(255,0,0)'
+  
 }
  
 applySavedColors();
@@ -99,6 +101,21 @@ document.addEventListener("click",()=>{
         localStorage.setItem("savedColors", JSON.stringify(savedColors));
         break;
     }
+  } else{
+    switch(event.target.id){
+      case 'seconds-toggle-div':
+        const secondsToggleDiv = event.target;
+        switch(window.getComputedStyle(secondsToggleDiv).backgroundColor){
+          case 'rgb(255, 0, 0)':
+            secondsToggleDiv.style.backgroundColor='rgb(0, 255, 0)';
+            localStorage.setItem('seconds-div-display', 'flex')
+            break
+          case 'rgb(0, 255, 0)':
+            secondsToggleDiv.style.backgroundColor = 'rgb(255, 0, 0)';
+            localStorage.setItem('seconds-div-display', 'none')
+        }
+        
+    }
   }
   applySavedColors();
 })
@@ -108,6 +125,25 @@ buttsDiv.addEventListener("keydown",(event)=>{
     event.target.nextElementSibling.click();
   }
 })
+
+
+// const secondsToggleDiv = document.getElementById('seconds-toggle-div');
+// secondsToggleDiv.addEventListener('click', ()=>{
+//   console.log(secondsToggleDiv.style.backgroundColor);
+//   switch(secondsToggleDiv.style.backgroundColor){
+//     case 'red':
+//       secondsToggleDiv.style.backgroundColor='green';
+//       console.log('green time')
+//       break
+//     case 'green':
+//       secondsToggleDiv.style.backgroundColor = 'red';
+//       console.log('red time')
+//       break
+//   }
+// })
+
+
+
 
 const columns = document.querySelectorAll(".column");
 
