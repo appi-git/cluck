@@ -15,9 +15,34 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
   background-color: var(--bgclr,#FFF8DC);
 }
+
+#clock-container{
+  display:flex;
+  flex-direction: row;
+  gap: 5px;
+  padding: 25px;
+
+  animation: 1s 1 normal fade-and-slide-in;
+}
+
+@keyframes fade-and-slide-in {
+  from {
+    translate: 0 50px;
+    scale: 90%;
+    opacity: 0%;
+  }
+  80% {
+    translate: 0 0;
+    scale: 90%;
+    opacity: 100%;
+  }
+  to{
+    scale: 100%;
+  }
+}
+
 
 .block{
   display:flex;
@@ -55,7 +80,7 @@ body{
 
 @media screen and (orientation: portrait){
   
-  body{
+  #clock-container{
     flex-direction: column;
   }
 }
